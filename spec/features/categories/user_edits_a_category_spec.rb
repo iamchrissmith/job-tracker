@@ -24,22 +24,26 @@ RSpec.feature "User edits a category" do
 
   context "with invalid params" do
     scenario "a user cannot create a category without a title" do
-      visit new_category_path
+      category = create(:category)
+
+      visit edit_category_path(category)
 
       fill_in "category[title]", with: nil
 
-      click_button "Create Category"
+      click_button "Update Category"
 
       expect(page).to have_content "Title can't be blank"
     end
 
     scenario "a user cannot create a category with an existing title" do
       category = create(:category)
-      visit new_category_path
+      category_2 = create(:category, title: "Second Category")
 
-      fill_in "category[title]", with: category.title
+      visit edit_category_path(category)
 
-      click_button "Create Category"
+      fill_in "category[title]", with: category_2.title
+
+      click_button "Update Category"
 
       expect(page).to have_content "Title has already been taken"
     end
