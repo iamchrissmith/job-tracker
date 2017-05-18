@@ -43,6 +43,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem "erb2haml"
 end
 
