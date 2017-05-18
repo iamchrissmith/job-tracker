@@ -1,0 +1,6 @@
+All Jobs for
+%strong= @company.name
+- @jobs.each do |job|
+  %ul
+    = job.title
+    at #{job.company.name}
