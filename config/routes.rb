@@ -4,5 +4,5 @@ Rails.application.routes.draw do
     resources :jobs
   end
 
-  resources :categories, only: [:new, :create, :show]
+  resources :categories, only: [:new, :create, :show, :index]
 end
