@@ -64,7 +64,7 @@ describe "User edits an existing job" do
     end
   end
   context "with invalid params" do
-    scenario "a user can edit a job title" do
+    scenario "a user cannot edit a job without a title" do
       job = create(:job)
       company = job.company
       company = job.company
@@ -81,7 +81,7 @@ describe "User edits an existing job" do
       expect(page).to have_content "Title can't be blank"
     end
 
-    scenario "a user can edit a job level_of_interest" do
+    scenario "a user cannot edit a job without level_of_interest" do
       job = create(:job)
       company = job.company
 
@@ -97,7 +97,7 @@ describe "User edits an existing job" do
       expect(page).to have_content "Level of interest can't be blank"
     end
 
-    scenario "a user can edit a job city" do
+    scenario "a user cannot edit a job without city" do
       job = create(:job)
       company = job.company
 
