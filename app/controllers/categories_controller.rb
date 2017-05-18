@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :destroy, :edit]
+  before_action :set_category, only: [:show, :destroy, :edit, :update]
   def new
     @category = Category.new
   end
@@ -18,7 +18,16 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+  end
 
+  def update
+    @category.update(category_params)
+    if @category.save
+      flash[:success] = "Category updated!"
+      redirect_to @category
+    else
+      render :edit
+    end
   end
 
   def index
