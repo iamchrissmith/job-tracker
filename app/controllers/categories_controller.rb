@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show]
+  before_action :set_category, only: [:show, :destroy]
   def new
     @category = Category.new
   end
@@ -19,6 +19,12 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+  end
+
+  def destroy
+    @category.destroy
+    flash[:success] = "#{@category.title} was successfully deleted!"
+    redirect_to categories_path
   end
 
   private

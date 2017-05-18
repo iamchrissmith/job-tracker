@@ -1,0 +1,9 @@
+%h1 All Categories
+
+%ul
+  - @categories.each do |category|
+    %li{class: "category-#{category.id}"}
+      = category.title
+      %span.edit
+      %span.delete
+        = link_to "Delete", category_path(category), method: :delete
