@@ -1,6 +1,10 @@
 All Jobs for
 %strong= @company.name
-- @jobs.each do |job|
-  %ul
-    = job.title
-    at #{job.company.name}
+%ul
+  - @jobs.each do |job|
+    %li{class: "job-#{job.id}"}
+      = job.title
+      = "at #{job.company.name}"
+      %span.edit= link_to "Edit", edit_company_job_path(@company, job)
+      %span.delete
+        = link_to "Delete", company_job_path(@company,job), method: :delete

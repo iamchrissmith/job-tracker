@@ -6,7 +6,12 @@ describe "User edits an existing job" do
       job = create(:job)
       company = job.company
       company = job.company
-      visit edit_company_job_path(company, job)
+
+      visit company_jobs_path(company)
+
+      within(".job-#{job.id}") do
+        click_link "Edit"
+      end
 
       fill_in "job[title]", with: "New Job Title"
       click_button "Update Job"
@@ -21,7 +26,12 @@ describe "User edits an existing job" do
     scenario "a user can edit a job level_of_interest" do
       job = create(:job)
       company = job.company
-      visit edit_company_job_path(company, job)
+
+      visit company_jobs_path(company)
+
+      within(".job-#{job.id}") do
+        click_link "Edit"
+      end
 
       fill_in "job[level_of_interest]", with: 30
       click_button "Update Job"
@@ -36,7 +46,12 @@ describe "User edits an existing job" do
     scenario "a user can edit a job city" do
       job = create(:job)
       company = job.company
-      visit edit_company_job_path(company, job)
+
+      visit company_jobs_path(company)
+
+      within(".job-#{job.id}") do
+        click_link "Edit"
+      end
 
       fill_in "job[city]", with: "Casper"
       click_button "Update Job"
@@ -53,7 +68,12 @@ describe "User edits an existing job" do
       job = create(:job)
       company = job.company
       company = job.company
-      visit edit_company_job_path(company, job)
+
+      visit company_jobs_path(company)
+
+      within(".job-#{job.id}") do
+        click_link "Edit"
+      end
 
       fill_in "job[title]", with: ""
       click_button "Update Job"
@@ -64,7 +84,12 @@ describe "User edits an existing job" do
     scenario "a user can edit a job level_of_interest" do
       job = create(:job)
       company = job.company
-      visit edit_company_job_path(company, job)
+
+      visit company_jobs_path(company)
+
+      within(".job-#{job.id}") do
+        click_link "Edit"
+      end
 
       fill_in "job[level_of_interest]", with: ''
       click_button "Update Job"
@@ -75,7 +100,12 @@ describe "User edits an existing job" do
     scenario "a user can edit a job city" do
       job = create(:job)
       company = job.company
-      visit edit_company_job_path(company, job)
+
+      visit company_jobs_path(company)
+
+      within(".job-#{job.id}") do
+        click_link "Edit"
+      end
 
       fill_in "job[city]", with: ""
       click_button "Update Job"

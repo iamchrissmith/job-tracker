@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_company
-  before_action :set_job, only: [:show, :edit, :update]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
   def index
     @jobs = @company.jobs
   end
@@ -36,7 +36,9 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    # implement on your own!
+    @job.destroy
+    flash[:success] = "Job ID #{@job.id} was successfully deleted!"
+    redirect_to company_jobs_path(@company)
   end
 
   private
