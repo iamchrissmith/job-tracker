@@ -1,9 +1,15 @@
-Title: #{@job.title}
+%p= "Title: #{@job.title}"
 %br/
-Description: #{@job.description}
+%p= "Description: #{@job.description}"
 %br/
-Level of Interest: #{@job.level_of_interest}
+%p= "Level of Interest: #{@job.level_of_interest}"
 %br/
-City: #{@job.city}
+%p= "City: #{@job.city}"
 %br/
-Company: #{link_to @job.company.name, company_path(@job.company)}
+%p
+  = "Company: "
+  = link_to @job.company.name, company_path(@job.company)
+%br/
+%p
+  = "Category: "
+  = link_to @job.category.title, category_path(@job.category)
