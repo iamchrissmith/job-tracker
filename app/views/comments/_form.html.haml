@@ -1,0 +1,9 @@
+= form_for [@company, @job, @comment] do |f|
+  = render partial: "shared/errors", locals: { target: @comment }
+  .form-group
+    = f.label :author
+    = f.text_field :author
+  .form-group
+    = f.label :comment
+    = f.text_area :comment
+  = f.submit

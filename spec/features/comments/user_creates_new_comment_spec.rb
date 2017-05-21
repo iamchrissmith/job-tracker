@@ -7,8 +7,8 @@ RSpec.feature "User creates a new comment" do
   context "with valid params" do
     scenario "a user can create a new commment" do
       job = create(:job)
-      
-      visit job
+
+      visit company_job_path(job.company, job)
 
       fill_in "comment[author]", with: comment_author
       fill_in "comment[comment]", with: comment_comment
@@ -25,7 +25,7 @@ RSpec.feature "User creates a new comment" do
     scenario "a user cannot create a comment without an author" do
       job = create(:job)
 
-      visit job
+      visit company_job_path(job.company, job)
 
       fill_in "comment[comment]", with: comment_comment
 
@@ -34,10 +34,10 @@ RSpec.feature "User creates a new comment" do
       expect(page).to have_content "Author can't be blank"
     end
 
-    scenario "a user cannot create a comment without an author" do
+    scenario "a user cannot create a comment without a comment" do
       job = create(:job)
 
-      visit job
+      visit company_job_path(job.company, job)
 
       fill_in "comment[author]", with: comment_author
 
