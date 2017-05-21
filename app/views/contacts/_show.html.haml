@@ -1,0 +1,12 @@
+.contact.row
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title= contact.full_name
+    .panel-body
+      %p= "Position: #{contact.position}"
+      %p= "Email: #{contact.email}"
+    .panel-footer
+      %button{type:"button", class:"btn btn-md btn-info"}
+        = link_to "Edit", edit_company_contacts_path(@company, contact)
+      %button{type:"button", class:"btn btn-md btn-danger"}
+        = link_to "Delete", company_contacts_path(@company, contact), method: :delete

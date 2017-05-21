@@ -1,11 +1,17 @@
-All Jobs for
-%strong= @company.name
-%ul.list-group
-  - @jobs.each do |job|
-    %li{class: "list-group-item job-#{job.id}"}
-      %h4
-        = link_to job.title, company_job_path(@company,job)
-        %button{type:"button", class:"btn btn-sm btn-info"}
-          = link_to "Edit", edit_company_job_path(@company, job)
-        %button{type:"button", class:"btn btn-sm btn-danger"}
-          = link_to "Delete", company_job_path(@company,job), method: :delete
+.container
+  %h1= @company.name
+  .container.col-md-6
+    %h2 All Jobs
+    %ul.list-group
+      - @jobs.each do |job|
+        %li{class: "list-group-item job-#{job.id}"}
+          %h4
+            = link_to job.title, company_job_path(@company,job)
+            %button{type:"button", class:"btn btn-sm btn-info"}
+              = link_to "Edit", edit_company_job_path(@company, job)
+            %button{type:"button", class:"btn btn-sm btn-danger"}
+              = link_to "Delete", company_job_path(@company,job), method: :delete
+  .container.col-md-6
+    %h2 Contacts
+    - @company.contacts.each do |contact|
+      = render partial: "contacts/show", locals: {contact: contact}
