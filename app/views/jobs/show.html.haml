@@ -1,15 +1,31 @@
-%p= "Title: #{@job.title}"
-%br/
-%p= "Description: #{@job.description}"
-%br/
-%p= "Level of Interest: #{@job.level_of_interest}"
-%br/
-%p= "City: #{@job.city}"
-%br/
-%p
-  = "Company: "
-  = link_to @job.company.name, company_path(@job.company)
-%br/
-%p
-  = "Category: "
-  = link_to @job.category.title, category_path(@job.category)
+=link_to "Back to #{@job.company.name}", company_path(@job.company)
+%ul.list-group
+  %li.list-group-item
+    %h4.list-group-item-heading Title:
+    %p.list-group-item-text= @job.title
+
+  %li.list-group-item
+    %h4.list-group-item-heading Description:
+    %p.list-group-item-text= @job.description
+
+  %li.list-group-item
+    %h4.list-group-item-heading Level of Interest:
+    %p.list-group-item-text= @job.level_of_interest
+
+  %li.list-group-item
+    %h4.list-group-item-heading City:
+    %p.list-group-item-text= @job.city
+
+  %li.list-group-item
+    %h4.list-group-item-heading Company:
+    %p.list-group-item-text= link_to @job.company.name, company_path(@job.company)
+
+  - if @job.category
+    %li.list-group-item
+      %h4.list-group-item-heading Category:
+      %p.list-group-item-text= link_to @job.category.title, category_path(@job.category)
+
+%button{type:"button", class:"btn btn-md btn-info"}
+  = link_to "Edit", edit_company_job_path(@company, @job)
+%button{type:"button", class:"btn btn-md btn-danger"}
+  = link_to "Delete", company_job_path(@company, @job), method: :delete

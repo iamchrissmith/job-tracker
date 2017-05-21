@@ -1,5 +1,6 @@
 %h1= "All Jobs for #{@category.title}"
 
-%ul
+%ul.list-group
   - @jobs.each do |job|
-    %li= link_to job.title, company_job_path(job.company, job)
+    %li{class: "list-group-item job-#{job.id}"}
+      = link_to job.title, company_job_path(job.company, job)

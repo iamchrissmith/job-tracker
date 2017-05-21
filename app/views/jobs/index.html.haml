@@ -1,10 +1,11 @@
 All Jobs for
 %strong= @company.name
-%ul
+%ul.list-group
   - @jobs.each do |job|
-    %li{class: "job-#{job.id}"}
-      = job.title
-      = "at #{job.company.name}"
-      %span.edit= link_to "Edit", edit_company_job_path(@company, job)
-      %span.delete
-        = link_to "Delete", company_job_path(@company,job), method: :delete
+    %li{class: "list-group-item job-#{job.id}"}
+      %h4
+        = link_to job.title, company_job_path(@company,job)
+        %button{type:"button", class:"btn btn-sm btn-info"}
+          = link_to "Edit", edit_company_job_path(@company, job)
+        %button{type:"button", class:"btn btn-sm btn-danger"}
+          = link_to "Delete", company_job_path(@company,job), method: :delete
