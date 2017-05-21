@@ -45,6 +45,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem "erb2haml"
+  gem "timecop"
 end
 
 group :development do

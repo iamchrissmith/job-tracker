@@ -12,13 +12,15 @@ RSpec.feature "User creates a new comment" do
 
       fill_in "comment[author]", with: comment_author
       fill_in "comment[comment]", with: comment_comment
+      Timecop.travel(Time.local(2017, 5, 20, 10, 0 ,0)) do
+        click_button "Create Comment"
 
-      click_button "Create Comment"
-
-      expect(current_path).to eq job
-      expect(page).to have_content comment_author
-      expect(page).to have_content comment_comment
-      expect(page).to have_content Date.now
+        expect(current_path).to eq company_job_path(job.company, job)
+        expect(page).to have_content "Your comment has been added."
+        expect(page).to have_content comment_author
+        expect(page).to have_content comment_comment
+        expect(page).to have_content DateTime.now.to_date.strftime("%b %d, %Y")
+      end
     end
   end
   context "with invalid params" do

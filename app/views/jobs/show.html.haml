@@ -30,4 +30,7 @@
 %button{type:"button", class:"btn btn-md btn-danger"}
   = link_to "Delete", company_job_path(@company, @job), method: :delete
 
+- @job.comments.each do |comment|
+  = render partial: "comments/show", locals: {comment: comment}
+
 = render partial: "comments/form"
