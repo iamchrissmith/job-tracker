@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Job do
+RSpec.describe Job, type: :model do
   describe "validations" do
     context "invalid attributes" do
       it "is invalid without a title" do
