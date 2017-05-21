@@ -1,4 +1,7 @@
-%p= comment.comment
-%p.meta
-  %span.author= "by #{comment.author}"
-  %span.date= "on #{comment.updated_at.strftime("%b %d, %Y at %H:%M")}"
+.comment.row
+  .panel.panel-default
+    %p.panel-body= comment.comment
+    .panel-footer.text-right
+      %p
+        %span.author= "by #{comment.author}"
+        %span.date= "on #{comment.updated_at.strftime("%b %d, %Y at %H:%M")}"

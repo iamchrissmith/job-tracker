@@ -43,4 +43,15 @@ describe Job do
       expect(job).to respond_to(:category)
     end
   end
+
+  describe ".comments" do
+    it "returns the comments in decending order" do
+      job = create(:job)
+      comment_1 = create(:comment, job: job)
+      comment_2 = create(:comment, job: job)
+      comment_3 = create(:comment, job: job)
+
+      expect(job.display_comments.map(&:author)).to match [comment_3.author,comment_2.author,comment_1.author]
+    end
+  end
 end

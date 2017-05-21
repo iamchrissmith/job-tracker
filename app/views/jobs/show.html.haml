@@ -25,12 +25,16 @@
       %h4.list-group-item-heading Category:
       %p.list-group-item-text= link_to @job.category.title, category_path(@job.category)
 
-%button{type:"button", class:"btn btn-md btn-info"}
-  = link_to "Edit", edit_company_job_path(@company, @job)
-%button{type:"button", class:"btn btn-md btn-danger"}
-  = link_to "Delete", company_job_path(@company, @job), method: :delete
+.container
+  %button{type:"button", class:"btn btn-md btn-info"}
+    = link_to "Edit", edit_company_job_path(@company, @job)
+  %button{type:"button", class:"btn btn-md btn-danger"}
+    = link_to "Delete", company_job_path(@company, @job), method: :delete
 
-- @job.comments.each do |comment|
-  = render partial: "comments/show", locals: {comment: comment}
+%h3 Comments
+.container.comments
+  - @job.display_comments.each do |comment|
+    = render partial: "comments/show", locals: {comment: comment}
 
-= render partial: "comments/form"
+.container
+  = render partial: "comments/form"
