@@ -7,13 +7,16 @@
     - else
       %ul.list-group
         - @jobs.each do |job|
-          %li{class: "list-group-item job-#{job.id}"}
-            %h4
-              = link_to job.title, company_job_path(@company,job)
+          %li{class: "clearfix list-group-item job-#{job.id}"}
+            .col-md-8
+              %h4
+                = link_to job.title, company_job_path(@company,job)
+            .col-md-4.text-right
               %button{type:"button", class:"btn btn-sm btn-info"}
                 = link_to "Edit", edit_company_job_path(@company, job)
               %button{type:"button", class:"btn btn-sm btn-danger"}
                 = link_to "Delete", company_job_path(@company,job), method: :delete
+    = link_to "New Job", new_company_job_path(@company)
   .container.col-md-6
     %h2 Contacts
     - if @contacts.empty?
@@ -22,5 +25,3 @@
       - @contacts.each do |contact|
         = render partial: "contacts/show", locals: {contact: contact}
     = render partial: "contacts/form"
-  .container.col-md-12
-    = link_to "New Job", new_company_job_path(@company)
