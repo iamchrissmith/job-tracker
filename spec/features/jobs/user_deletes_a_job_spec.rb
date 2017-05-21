@@ -5,7 +5,7 @@ describe "User deletes existing job" do
     job = create(:job)
     company = job.company
 
-    visit company_jobs_path(company)
+    visit company_path(company)
 
     within(".job-#{job.id}") do
       click_link "Delete"

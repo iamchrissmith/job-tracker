@@ -7,7 +7,7 @@ describe "User edits an existing job" do
       job = create(:job, category: category)
       company = job.company
 
-      visit company_jobs_path(company)
+      visit company_path(company)
 
       within(".job-#{job.id}") do
         click_link "Edit"
@@ -29,7 +29,7 @@ describe "User edits an existing job" do
       job = create(:job, category: category)
       company = job.company
 
-      visit company_jobs_path(company)
+      visit company_path(company)
 
       within(".job-#{job.id}") do
         click_link "Edit"
@@ -51,7 +51,7 @@ describe "User edits an existing job" do
       job = create(:job, category: category)
       company = job.company
 
-      visit company_jobs_path(company)
+      visit company_path(company)
 
       within(".job-#{job.id}") do
         click_link "Edit"
@@ -74,7 +74,7 @@ describe "User edits an existing job" do
       company = job.company
       new_category = create(:category)
 
-      visit company_jobs_path(company)
+      visit company_path(company)
 
       within(".job-#{job.id}") do
         click_link "Edit"
@@ -96,7 +96,7 @@ describe "User edits an existing job" do
       job = create(:job)
       company = job.company
 
-      visit company_jobs_path(company)
+      visit company_path(company)
 
       within(".job-#{job.id}") do
         click_link "Edit"
@@ -112,7 +112,7 @@ describe "User edits an existing job" do
       job = create(:job)
       company = job.company
 
-      visit company_jobs_path(company)
+      visit company_path(company)
 
       within(".job-#{job.id}") do
         click_link "Edit"
@@ -128,7 +128,7 @@ describe "User edits an existing job" do
       job = create(:job)
       company = job.company
 
-      visit company_jobs_path(company)
+      visit company_path(company)
 
       within(".job-#{job.id}") do
         click_link "Edit"

@@ -1,0 +1,20 @@
+.contact.row
+  .panel.panel-default
+    = form_for [@company, @contact] do |f|
+      = render partial: "shared/errors", locals: { target: @contact }
+      .panel-heading.form-inline
+        .form-group
+          = f.label :first_name
+          = f.text_field :first_name
+        .form-group
+          = f.label :last_name
+          = f.text_field :last_name
+      .panel-body
+        .form-group
+          = f.label :position
+          = f.text_field :position
+        .form-group
+          = f.label :email
+          = f.text_field :email
+      .panel-footer
+        = f.submit
