@@ -43,7 +43,6 @@ RSpec.feature "User creates a new comment" do
 
       Timecop.travel(Time.local(2017, 5, 20, 11, 0 ,0)) do
         click_button "Create Comment"
-        save_and_open_page
 
         expect(current_path).to eq company_job_path(job.company, job)
 
