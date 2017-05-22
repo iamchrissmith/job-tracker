@@ -13,7 +13,7 @@ describe "User sees one company" do
     expect(page).to have_content job.title
     expect(page).to have_content contact.full_name
   end
-  scenario "a user can create a contact" do
+  scenario "a user can create a contact from company page" do
     company = create(:company)
     job = create(:job, company: company)
     contact = create(:contact, company: company)

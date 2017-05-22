@@ -3,7 +3,10 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:destroy, :edit, :update]
 
   def index
+  end
 
+  def new
+    @contact = @company.contacts.new()
   end
 
   def create

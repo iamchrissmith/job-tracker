@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User creates a new job" do
+RSpec.feature "User creates a new job" do
   context "with valid params" do
     scenario "a user can create a new job" do
       company = create(:company)
