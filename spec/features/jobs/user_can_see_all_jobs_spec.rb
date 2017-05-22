@@ -24,11 +24,15 @@ RSpec.feature "User can view jobs index" do
   end
 
   context "when sort is passed" do
-    xscenario "sort by interest" do
-
+    scenario "sort by location" do
+      visit ('/jobs?sort=location')
+      expect(page).to have_selector('.job:first-child', text: "City: Denver")
+      expect(page).to have_selector('.job:last-child', text: "City: NYC")
     end
-    xscenario "sort by location" do
-
+    scenario "sort by interest" do
+      visit ('/jobs?sort=interest')
+      expect(page).to have_selector('.job:first-child', text: "Level of Interest: 3")
+      expect(page).to have_selector('.job:last-child', text: "Level of Interest: 1")
     end
   end
 end

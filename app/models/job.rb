@@ -20,4 +20,10 @@ class Job < ActiveRecord::Base
   def self.locations
     Job.group(:city).order('count_id desc').count(:id)
   end
+
+  def self.sorted(by)
+    by = "city ASC" if by == "location"
+    by = "level_of_interest DESC" if by == "interest"
+    Job.order(by)
+  end
 end

@@ -108,4 +108,21 @@ RSpec.describe Job, type: :model do
       })
     end
   end
+
+  describe "self.sorted" do
+    let(:job_0) {create(:job, level_of_interest: 5, city: "NYC")}
+    let(:job_1) {create(:job, level_of_interest: 4, city: "NYC")}
+    let(:job_2) {create(:job, level_of_interest: 3)}
+    let(:job_3) {create(:job, level_of_interest: 2)}
+    let(:job_4) {create(:job, level_of_interest: 1)}
+    let(:job_5) {create(:job, level_of_interest: 0)}
+    it "returns the jobs sorted by location with sort=location" do
+      expect(Job.sorted("location")).to match [
+        job_2, job_3, job_4, job_5, job_0, job_1]
+    end
+    it "returns the jobs sorted by interest with sort=interest" do
+      expect(Job.sorted("interest")).to match [
+        job_0, job_1, job_2, job_3, job_4, job_5]
+    end
+  end
 end
