@@ -16,4 +16,8 @@ class Job < ActiveRecord::Base
   def self.top_companies(number)
     Job.joins(:company).group(:name).order("average_level_of_interest desc").average(:level_of_interest)
   end
+
+  def self.locations
+    Job.group(:city).order('count_id desc').count(:id)
+  end
 end

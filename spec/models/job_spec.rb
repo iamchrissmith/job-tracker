@@ -86,7 +86,25 @@ RSpec.describe Job, type: :model do
       expect(Job.top_companies(3)).to match({
         "#{company_3.name}" => 3,
         "#{company_2.name}" => 2,
-        "#{company_1.name}" => 1 
+        "#{company_1.name}" => 1
+      })
+    end
+  end
+
+  describe "self.locations" do
+    before {
+      create(:job, city: "NYC")
+      create(:job, city: "NYC")
+      create(:job)
+      create(:job)
+      create(:job)
+      create(:job)
+    }
+
+    it "returns a hash of the locations with job count" do
+      expect(Job.locations).to match({
+        "Denver" => 4,
+        "NYC" => 2
       })
     end
   end

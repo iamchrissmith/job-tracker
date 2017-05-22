@@ -16,3 +16,10 @@
 %ol
   - Job.top_companies(3).each do |company, average|
     %li= "#{company} (#{average})"
+
+%h2 Jobs by location
+%ol
+  - Job.locations.each do |location, count|
+    %li
+      = "#{location} - "
+      = link_to "#{pluralize(count, "job")}", jobs_path(location: location)
