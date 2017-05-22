@@ -38,8 +38,8 @@ RSpec.feature "User can view a dashboard" do
     visit ('/dashboard')
     expect(page).to have_content "Jobs by location"
     expect(page).to have_link "4 jobs", jobs_path(location: "Denver")
-    expect(page).to have_content "Denver - 4 jobs"
+    expect(page).to have_content "Denver 4 jobs"
     expect(page).to have_link "2 jobs", jobs_path(location: "NYC")
-    expect(page).to have_content "NYC - 2 jobs"
+    expect(page).to have_content "NYC 2 jobs"
   end
 end

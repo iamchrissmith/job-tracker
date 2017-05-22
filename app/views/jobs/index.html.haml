@@ -1,14 +1,14 @@
 %h1 All Jobs
 .container.jobs
   - @jobs.each do |job|
-    %div{class: "row job job-#{job.id}"}
+    %div{class: "row job job-#{job.id} col-md-4"}
       .panel.panel-default
         .panel-heading
           %h4.panel-title= job.title
         .panel-body
           %p= "Level of Interest: #{job.level_of_interest}"
           %p= "City: #{job.city}"
-          %p= "Category: #{job.category}"
+          %p= "Category: #{job.category.title}"
         .panel-footer.text-right
           %button{type:"button", class:"btn btn-md btn-info"}
             = link_to "Edit", edit_company_job_path(job.company, job)

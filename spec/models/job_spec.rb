@@ -83,11 +83,11 @@ RSpec.describe Job, type: :model do
     }
 
     it "returns a hash of the level of interests" do
-      expect(Job.top_companies(3)).to match({
-        "#{company_3.name}" => 3,
-        "#{company_2.name}" => 2,
-        "#{company_1.name}" => 1
-      })
+      expect(Job.top_companies(3)).to match([
+        ["#{company_3.name}", 3.0],
+        ["#{company_2.name}", 2.0],
+        ["#{company_1.name}", 1.0]
+      ])
     end
   end
 

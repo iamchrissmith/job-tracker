@@ -1,4 +1,28 @@
 %h1 Jobs Dashboard
+%hr
+
+.container.col-md-6
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title Top three companies by level of interest
+    .panel-body
+      %ol
+      - Job.top_companies(3).each do |company, average|
+        %li
+          = link_to company, company_path(company)
+          = "(#{average})"
+
+.container.col-md-6
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title Jobs by location
+    .panel-body
+      %ol.list-group
+        - Job.locations.each do |location, count|
+          %li.list-group-item
+            = "#{location}"
+            %span.badge
+              = link_to "#{pluralize(count, "job")}", jobs_path(location: location)
 
 %h2 Job Count by level of interest
 %table
@@ -11,15 +35,3 @@
       %tr
         %td= score
         %td{class: "count_level_of_interest_#{score}"}= count
-
-%h2 Top three companies by level of interest
-%ol
-  - Job.top_companies(3).each do |company, average|
-    %li= "#{company} (#{average})"
-
-%h2 Jobs by location
-%ol
-  - Job.locations.each do |location, count|
-    %li
-      = "#{location} - "
-      = link_to "#{pluralize(count, "job")}", jobs_path(location: location)

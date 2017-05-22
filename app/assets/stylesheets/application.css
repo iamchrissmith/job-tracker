@@ -17,3 +17,15 @@
 button a {
   color:white;
 }
+
+.jobs .job .panel{
+  margin: 15px;
+}
+
+.badge a {
+  color:white;
+}
+
+.badge a:hover {
+  color:white
+}
