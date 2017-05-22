@@ -46,9 +46,9 @@ group :development, :test do
   gem 'database_cleaner'
   gem "erb2haml"
   gem "timecop"
-  gem "faker"
 end
 
+gem "faker"
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
