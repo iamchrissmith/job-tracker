@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User edits an existing job" do
+RSpec.feature "User edits an existing job" do
   context "with valid params" do
     scenario "a user can edit a job title" do
       category = create(:category)
