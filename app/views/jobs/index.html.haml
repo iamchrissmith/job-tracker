@@ -1,4 +1,7 @@
-%h1 All Jobs
+%h1
+  Jobs
+  - if params[:sort]
+    = "by #{params[:sort].capitalize}"
 .container.jobs
   - @jobs.each do |job|
     %div{class: "row job job-#{job.id} col-md-4"}
