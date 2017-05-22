@@ -1,8 +1,8 @@
 class JobsController < ApplicationController
-  before_action :set_company
+  before_action :set_company, except: [:index]
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   def index
-    binding.pry
+    @jobs = Job.all
   end
 
   def new

@@ -1,18 +1,16 @@
+%h1 All Jobs
 .container
-  %h1= @company.name
-  .container.col-md-6
-    %h2 All Jobs
-    %ul.list-group
-      - @jobs.each do |job|
-        %li{class: "list-group-item job-#{job.id}"}
-          %h4
-            = link_to job.title, company_job_path(@company,job)
-            %button{type:"button", class:"btn btn-sm btn-info"}
-              = link_to "Edit", edit_company_job_path(@company, job)
-            %button{type:"button", class:"btn btn-sm btn-danger"}
-              = link_to "Delete", company_job_path(@company,job), method: :delete
-  .container.col-md-6
-    %h2 Contacts
-    - @company.contacts.each do |contact|
-      = render partial: "contacts/show", locals: {contact: contact}
-    = render partial: "contacts/form"
+  - @jobs.each do |job|
+    %div{class: "row job job-#{job.id}"}
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title= job.title
+        .panel-body
+          %p= "Level of Interest: #{job.level_of_interest}"
+          %p= "City: #{job.city}"
+          %p= "Category: #{job.category}"
+        .panel-footer.text-right
+          %button{type:"button", class:"btn btn-md btn-info"}
+            = link_to "Edit", edit_company_job_path(job.company, job)
+          %button{type:"button", class:"btn btn-md btn-danger"}
+            = link_to "Delete", company_job_path(job.company, job), method: :delete
