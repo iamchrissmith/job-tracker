@@ -79,7 +79,6 @@ RSpec.feature "User edits an existing contact" do
       click_button "Update Contact"
       contact.reload
 
-      expect(current_path).to eq(company_path(company))
       expect(page).to have_content "First name can't be blank"
       expect(page).to have_content "Last name can't be blank"
       expect(page).to have_content "Position can't be blank"

@@ -19,6 +19,19 @@ class ContactsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @contact.update(contact_params)
+    if @contact.save
+      flash[:success] = "#{@contact.full_name} updated!"
+      redirect_to company_path(@company)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @contact.destroy
     flash[:success] = "Contact for #{@contact.full_name} was successfully deleted!"
