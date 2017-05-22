@@ -2,7 +2,11 @@ class JobsController < ApplicationController
   before_action :set_company, except: [:index]
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   def index
-    @jobs = Job.all
+    if params[:location]
+      @jobs = Job.where(city: params[:location])
+    else
+      @jobs = Job.all
+    end
   end
 
   def new

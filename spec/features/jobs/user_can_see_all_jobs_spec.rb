@@ -15,7 +15,7 @@ RSpec.feature "User can view jobs index" do
     expect(page).to have_selector('.job', count: 6)
   end
 
-  xscenario "a user can view jobs in just one location" do
+  scenario "a user can view jobs in just one location" do
     visit ('/jobs?location=Denver')
     expect(page).to have_selector('.job', count: 4)
 

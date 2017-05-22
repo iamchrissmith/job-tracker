@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     resources :contacts
 
-    resources :jobs do
+    resources :jobs, except:[:index] do
       resources :comments
     end
   end
