@@ -1,13 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature "User can view a dashboard" do
+  let(:company_1) {create(:company)}
+  let(:company_2) {create(:company)}
+  let(:company_3) {create(:company)}
   before {
-    create(:job, level_of_interest: 1)
-    create(:job, level_of_interest: 1)
-    create(:job, level_of_interest: 1)
-    create(:job, level_of_interest: 2)
-    create(:job, level_of_interest: 2)
-    create(:job, level_of_interest: 3)
+    create(:job, level_of_interest: 1, company: company_1)
+    create(:job, level_of_interest: 1, company: company_1)
+    create(:job, level_of_interest: 1, company: company_1)
+    create(:job, level_of_interest: 2, company: company_2)
+    create(:job, level_of_interest: 2, company: company_2)
+    create(:job, level_of_interest: 3, company: company_3)
   }
 
   scenario "a user can visit /dashboard" do
@@ -21,5 +24,13 @@ RSpec.feature "User can view a dashboard" do
     expect(page).to have_css('.count_level_of_interest_1', :text => "3")
     expect(page).to have_css('.count_level_of_interest_2', :text => "2")
     expect(page).to have_css('.count_level_of_interest_3', :text => "1")
+  end
+
+  scenario "a user can see a top three companies by level_of_interest" do
+    visit ('/dashboard')
+    expect(page).to have_content "Top three companies by level of interest"
+    expect(page).to have_content "#{company_3.name} (3.0)"
+    expect(page).to have_content "#{company_2.name} (2.0)"
+    expect(page).to have_content "#{company_1.name} (1.0)"
   end
 end

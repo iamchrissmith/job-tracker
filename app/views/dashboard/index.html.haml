@@ -11,3 +11,8 @@
       %tr
         %td= score
         %td{class: "count_level_of_interest_#{score}"}= count
+
+%h2 Top three companies by level of interest
+%ol
+  - Job.top_companies(3).each do |company, average|
+    %li= "#{company} (#{average})"

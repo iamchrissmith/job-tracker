@@ -68,4 +68,26 @@ RSpec.describe Job, type: :model do
       expect(Job.by_level_of_interest).to match({1 => 3, 2 => 2, 3 => 1})
     end
   end
+
+  describe "self.top_companies" do
+    let(:company_1) {create(:company)}
+    let(:company_2) {create(:company)}
+    let(:company_3) {create(:company)}
+    before {
+      create(:job, level_of_interest: 1, company: company_1)
+      create(:job, level_of_interest: 1, company: company_1)
+      create(:job, level_of_interest: 1, company: company_1)
+      create(:job, level_of_interest: 2, company: company_2)
+      create(:job, level_of_interest: 2, company: company_2)
+      create(:job, level_of_interest: 3, company: company_3)
+    }
+
+    it "returns a hash of the level of interests" do
+      expect(Job.top_companies(3)).to match({
+        "#{company_3.name}" => 3,
+        "#{company_2.name}" => 2,
+        "#{company_1.name}" => 1 
+      })
+    end
+  end
 end
