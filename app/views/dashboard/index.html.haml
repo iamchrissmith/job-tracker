@@ -1,1 +1,13 @@
 %h1 Jobs Dashboard
+
+%h2 Job Count by level of interest
+%table
+  %thead
+    %tr
+      %th Level of Interest
+      %th Job Count
+  %tbody
+    - Job.by_level_of_interest.each do |score, count|
+      %tr
+        %td= score
+        %td{class: "count_level_of_interest_#{score}"}= count

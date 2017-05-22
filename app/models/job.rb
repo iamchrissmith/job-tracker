@@ -8,4 +8,8 @@ class Job < ActiveRecord::Base
   def display_comments
     comments.order(updated_at: :desc)
   end
+
+  def self.by_level_of_interest
+    Job.group(:level_of_interest).order('count_id desc').count(:id)
+  end
 end

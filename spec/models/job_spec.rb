@@ -54,4 +54,18 @@ RSpec.describe Job, type: :model do
       expect(job.display_comments.map(&:author)).to match [comment_3.author,comment_2.author,comment_1.author]
     end
   end
+
+  describe "self.by_level_of_interest" do
+    before {
+      create(:job, level_of_interest: 1)
+      create(:job, level_of_interest: 1)
+      create(:job, level_of_interest: 1)
+      create(:job, level_of_interest: 2)
+      create(:job, level_of_interest: 2)
+      create(:job, level_of_interest: 3)
+    }
+    it "returns a hash of the level of interests" do
+      expect(Job.by_level_of_interest).to match({1 => 3, 2 => 2, 3 => 1})
+    end
+  end
 end
